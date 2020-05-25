@@ -1,0 +1,21 @@
+<div class="form-group">
+  <label for="car-name">Car name</label>
+  <input type="text"
+         class="form-control"
+         id="car-name"
+         [(ngModel)]="carName"
+         aria-describedby="Car Name">
+</div>
+
+<div class="form-group">
+  <label for="car-model">Car model</label>
+  <input type="text"
+         class="form-control"
+         id="car-model"
+         [(ngModel)]="carModel"
+         aria-describedby="Car Model">
+</div>
+
+<button type="button" (click)="onAdd()" class="btn btn-outline-primary">Add car</button>
+<button type="button" (click)="onLoad()" class="btn btn-outline-warning ml-2">Load cars</button>
+
