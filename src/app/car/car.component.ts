@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Car} from '../car.model';
+import {CarsService} from '../services/cars.service';
 
 @Component({
   selector: 'app-car',
@@ -9,13 +10,18 @@ import {Car} from '../car.model';
 export class CarComponent {
 
   @Input() car: Car;
-  @Output() deleteCar = new EventEmitter<Car>()
+
+  constructor(private service: CarsService) {
+  }
 
   onDelete() {
-    this.deleteCar.emit(this.car);
+    this.service.deleteCar(this.car);
   }
 
   onBuy() {
-    this.car.isSold = true;
+    const carCopy = Object.assign({}, this.car);
+    console.log(carCopy);
+    carCopy.isSold = true;
+    this.service.updateCar(carCopy);
   }
 }

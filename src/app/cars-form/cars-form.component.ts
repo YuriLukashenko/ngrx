@@ -1,45 +1,34 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {Car} from '../car.model';
 import * as moment from 'moment';
+import {CarsService} from '../services/cars.service';
 
 @Component({
   selector: 'app-cars-form',
   templateUrl: './cars-form.component.html',
   styleUrls: ['./cars-form.component.css']
 })
-export class CarsFormComponent implements OnInit {
-
-  private id = 2;
+export class CarsFormComponent {
   carName = '';
   carModel = '';
 
-  @Output() addCar = new EventEmitter<Car>();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(private service: CarsService) { }
 
   onAdd() {
     if (this.carModel === '' || this.carName === '') {
       return;
     }
 
-    this.id++;
-    const car = new Car(
-      this.carName,
-      moment().format('DD.MM.YY'),
-      this.carModel,
-      false,
-      this.id
-    );
+    const date = moment().format('DD.MM.YY');
+    const car = new Car(this.carName, date, this.carModel);
 
-    this.addCar.emit(car);
+    this.service.addCar(car);
 
     this.carModel = '';
     this.carName = '';
   }
 
   onLoad() {
+    this.service.loadCars();
   }
 }

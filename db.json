@@ -1,0 +1,25 @@
+{
+  "cars": [
+    {
+      "name": "Lol",
+      "date": "26.05.20",
+      "model": "kekovki",
+      "isSold": false,
+      "id": 5
+    },
+    {
+      "name": "ddd",
+      "date": "26.05.20",
+      "model": "ddd",
+      "isSold": false,
+      "id": 8
+    },
+    {
+      "name": "ff",
+      "date": "26.05.20",
+      "model": "fff",
+      "isSold": false,
+      "id": 9
+    }
+  ]
+}
